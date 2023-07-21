@@ -24,7 +24,7 @@ read has 3 parameters 0 is the device(keyboard) num
 also if given input or message is too big(>1024) then read and write syscalls will split,
 and message pointers will be like this
 
-for example: if message is "absdefjhij" x 110
+for example: if message is "absdefghij" x 110
 
 read(0, "abcdefghijabcdefghijabcdefghijab"..., 1024) = 1024
 read(0, "efghijabcdefghijabcdefghijabcdef"..., 1024) = 77
@@ -32,4 +32,5 @@ read(0, "efghijabcdefghijabcdefghijabcdef"..., 1024) = 77
 write(1, "abcdefghijabcdefghijabcdefghijab"..., 1024) = 1024
 write(1, "efghijabcdefghijabcdefghijabcdef"..., 84) = 77
 
- 
+If IO.txt is compared with Blank_IO.txt(strace-ed blank file with iostream included),
+then there is only few lines that differ(syscalls needed for read and write)
